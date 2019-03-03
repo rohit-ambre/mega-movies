@@ -1,7 +1,7 @@
 #gitignore file
 
+# cache files
 BookMyMovie/__pycache__
-
 Mega_Movies/__pycache__
-
 User/__pycache__
+BookMyMovie/migrations/__pycache__
