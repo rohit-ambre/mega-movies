@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from BookMyMovie import views as BM_views
+from User import views as user_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',BM_views.landing, name='landing'),
     path('BookMovie/', include('BookMyMovie.urls')),
+    path('register/', user_view.register, name='register'),
 ]
