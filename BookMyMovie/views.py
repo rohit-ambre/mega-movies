@@ -4,7 +4,8 @@ from django.http import HttpResponse
 
 
 def landing(request):
-    return HttpResponse("This is a landing page")
+    # return HttpResponse("This is a landing page")
+    return render(request,'BookMyMovie/landing.html')
 
 def index(request):
     return HttpResponse("Home page for BookMyMovie")
