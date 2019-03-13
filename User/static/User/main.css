@@ -3,4 +3,18 @@
     width: 125px;
     margin-right: 20px;
     margin-bottom: 16px;
-  }
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 4rem;
+}
