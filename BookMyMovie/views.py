@@ -1,10 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import requests
 # Create your views here.
 
 
 def landing(request):
-    return render(request,'BookMyMovie/landing.html')
+    url = 'http://www.omdbapi.com/?apikey=*******&r=json&s={}'
+    # term = 'dhoom'
+
+    if request.method == 'POST':
+        term = request.POST.get("search", "")
+        res = requests.get(url.format(term))
+        # data = {'some':res.text}
+        print(res.text)
+        return render(request,'BookMyMovie/landing.html')
 
 def index(request):
     return render(request,'BookMyMovie/BookMovie.html')

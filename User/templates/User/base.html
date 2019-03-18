@@ -25,9 +25,15 @@
                                 <a class="nav-link" href="{% url 'index' %}">Book Your Movie <span class="sr-only">(current)</span></a>
                             </li>
                         </ul>
-                        {% if "/" == request.path %}
-                            <input class="form-control col-md-3" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        {% if "/" == request.path %}>
+                            <form method='POST' class="form-inline">
+                                {% csrf_token %}
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
+                                </div>
+                                <button class="btn btn-outline-success mb-2" type="submit">Search</button>
+                                
+                            </form>    
                         {%endif%}
                         <div class="navbar-nav">
                             {% if user.is_authenticated %}
