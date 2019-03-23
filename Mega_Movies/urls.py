@@ -19,13 +19,15 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from BookMyMovie import views as BM_views
+from Movies import views as M_views
 from User import views as user_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',BM_views.landing, name='landing'),
+    path('',M_views.landing, name='landing'),
     path('BookMovie/', include('BookMyMovie.urls')),
+    path('Movies/', include('Movies.urls')),
     path('register/', user_view.register, name='register'),
     path('profile/', user_view.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='User/login.html'), name='login'),

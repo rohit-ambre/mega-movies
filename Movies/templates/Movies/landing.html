@@ -1,0 +1,33 @@
+{% extends 'User/base.html' %}
+
+{% block content %}
+    <h1>landing page content</h1>
+
+    {% if movies %}
+
+        {% if movies.Response %}
+            {% comment %} {{movies.Search}} {% endcomment %}
+            <div class="row">
+                {% for movie in movies.Search %}
+                    <div class="col-md-4">
+                        <div class="card" >
+                            {% if movie.Poster == 'N/A' %}
+                                <img class="card-img-top" src="" alt="Card image cap">
+                            {% else %}
+                                <img class="card-img-top" src="{{movie.Poster}}" alt="Card image cap">
+                            {% endif %}
+                             <div class="card-body">
+                                <h4 class="card-title">{{movie.Title}}</h5>
+                                <p class="card-text">{{movie.Year}}</p>
+                                <p class="card-text">{{movie.Type}}</p>
+                            </div>
+                        </div>
+                    </div>                        
+                {% empty %}
+                    Nothing found
+                {% endfor %}
+            </div>
+        {% endif %}  
+    {% endif %}
+
+{% endblock content %}
