@@ -6,13 +6,12 @@
     {% if movies %}
 
         {% if movies.Response %}
-            {% comment %} {{movies.Search}} {% endcomment %}
             <div class="row">
                 {% for movie in movies.Search %}
                     <div class="col-md-4">
                         <div class="card" >
                             {% if movie.Poster == 'N/A' %}
-                                <img class="card-img-top" src="" alt="Card image cap">
+                                <img class="card-img-top" src="https://via.placeholder.com/350x520.png?text=No+Poster+Sorry" alt="Card image cap">
                             {% else %}
                                 <img class="card-img-top" src="{{movie.Poster}}" alt="Card image cap">
                             {% endif %}
@@ -20,6 +19,7 @@
                                 <h4 class="card-title">{{movie.Title}}</h5>
                                 <p class="card-text">{{movie.Year}}</p>
                                 <p class="card-text">{{movie.Type}}</p>
+                                <a href="{% url 'display' movie.imdbID %}" class="btn btn-primary">More</a>
                             </div>
                         </div>
                     </div>                        

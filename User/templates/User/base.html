@@ -25,7 +25,7 @@
                                 <a class="nav-link" href="{% url 'index' %}">Book Your Movie <span class="sr-only">(current)</span></a>
                             </li>
                         </ul>
-                        {% if "/" == request.path %}>
+                        {% if "/Movies/" == request.path %}>
                             <form method='POST' class="form-inline" id="search-form">
                                 {% csrf_token %}
                                 <div class="form-group mx-sm-3 mb-2">
