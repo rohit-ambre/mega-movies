@@ -1,46 +1,46 @@
 {% extends 'User/base.html' %}
 
 {% block content %}
-    <h1>landing 2 page content</h1>
-
-    <div class="row">
-        <div class="container">
-            <div class="well well-sm">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <img src="{{movie.Poster}}" alt="" class="img-rounded img-responsive" />
-                    </div>
-                    <div class="col-md-offset-1 col-sm-6 col-md-8">
-                        <h3>{{movie.Title}}</h3>
-                        <cite title="Year">{{movie.Year}}<i class="glyphicon glyphicon-map-marker">
-                        </i></cite>
-                        <p>Genre :{{movie.Genre}}</p>
-                        <p>Director: {{movie.Director}}</p>
-                        <p>Released: {{movie.Released}}</p>
-                        <p>Runtime: {{movie.Runtime}}</p>
-                        <p>
-                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                            <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                            <br />
-                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                        <!-- Split button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                Social</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span><span class="sr-only">Social</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Twitter</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Github</a></li>
+    {% if movie.Response %}
+        <div class="row">
+            <div class="container">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <img src="{{movie.Poster}}" alt="" class="img-rounded img-responsive" />
+                        </div>
+                        <div class="col-md-offset-1 col-sm-6 col-md-8">
+                            <h3>{{movie.Title}}</h3>
+                            <cite title="Year">{{movie.Year}}<i class="glyphicon glyphicon-map-marker">
+                            </i></cite>
+                            <h5><b>Genre :</b>{{movie.Genre}}</h5>
+                            <h5><b>IMDB :</b>{{movie.imdbRating}}</h5>
+                            <h5><b>Director:</b> {{movie.Director}}</h5>
+                            <h5><b>Released:</b> {{movie.Released}}</h5>
+                            <h5><b>Runtime:</b> {{movie.Runtime}}</h5>
+                            <h5><b>Language:</b> {{movie.Language}}</h5>
+                            <h5><b>Country:</b> {{movie.Country}}</h5>
+                            <h5><b>Ratings</b></h5>
+                            <ul>
+                                {% for rating in movie.Ratings %}
+                                    <li>{{rating.Source}}:{{rating.Value}}</li>
+                                    <br />
+                                {% endfor %}
                             </ul>
+                        </div>
+                        <div class="col-md-8">
+                            <h5><b>Actors:</b> {{movie.Actors}}</h5>
+                            <h5><b>Plot:</b> {{movie.Plot}}</h5>
+                            <h5><b>Writers:</b> {{movie.Writer}}</h5>
+                            <h5><b>BoxOffice:</b> {{movie.BoxOffice}}</h5>
+                            <h5><b>Production:</b> {{movie.Production}}</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% else %}
+        <h3>No Data Found</h3>
+    {% endif %}
 
 {% endblock content %}
