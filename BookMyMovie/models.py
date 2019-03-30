@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.translation import gettext as _
 from django.contrib.auth.models import User
 
-# Create your models here.
 
 class Movie(models.Model):
 
@@ -56,7 +55,7 @@ class ShowTime(models.Model):
         verbose_name_plural = _("ShowTimes")
 
     def __str__(self):
-        return self.day+self.time
+        return self.day+' '+self.time
 
     def get_absolute_url(self):
         return reverse("ShowTime_detail", kwargs={"pk": self.pk})
@@ -78,7 +77,7 @@ class Booking(models.Model):
         verbose_name_plural = _("Bookings")
 
     def __str__(self):
-        return self.name
+        return self.movie+' '+user
 
     def get_absolute_url(self):
         return reverse("Booking_detail", kwargs={"pk": self.pk})
