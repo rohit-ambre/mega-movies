@@ -49,7 +49,7 @@
             </nav>
         </header>    
             
-        <main role="main" class="container">
+        <main role="main">
             <div class="row">
                 <div class="col-md-8">
                     {% if messages %}
@@ -63,6 +63,9 @@
             </div>
             {% block content %}
             {% endblock %}
+
+            {% block scripts %}
+            {% endblock %}
         </main>
 
         <!-- Optional JavaScript -->
@@ -72,13 +75,5 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 
-    <script>
-       /* $('#search-form').on('submit', function(event){
-            {% comment %} event.preventDefault(); {% endcomment %}
-            console.log("form submitted!")  // sanity check
-            {% comment %} create_post(); {% endcomment %}
-        }); */
-
-    </script>
     
 </html>
