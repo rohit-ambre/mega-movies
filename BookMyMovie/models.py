@@ -13,6 +13,7 @@ class Movie(models.Model):
     posterURL = models.URLField( max_length=200)
     releaseDate = models.DateField( auto_now=False, auto_now_add=False)
     creationDate = models.DateTimeField( auto_now_add=True)
+    imdbID = models.CharField(_("IMDB_ID"), max_length=50)
 
     class Meta:
         verbose_name = _("Movie")
