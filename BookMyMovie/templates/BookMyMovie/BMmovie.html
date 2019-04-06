@@ -18,12 +18,13 @@
                             <h3>{{movie.name}}</h3>
                             <cite title="Year">{{movie.Year}}<i class="glyphicon glyphicon-map-marker">
                             </i></cite>
+                            <br>
                             <h5><b>Plot :</b>{{movie.description}}</h5>
                             <h5><b>Genre :</b>{{movie.genre}}</h5>
                             <h5><b>Director:</b> {{movie.director}}</h5>
                             <h5><b>Language:</b> {{movie.language}}</h5>
-                            <h5><b>Country:</b> {{movie.releaseDate}}</h5>
-                            <a class="btn btn-primary book-btn" href="">Book Your Seat</a>
+                            <h5><b>Release Date:</b> {{movie.releaseDate}}</h5>
+                            {% comment %} <a class="btn btn-primary book-btn" href="{% url 'calender' %}">Book Your Seat</a> {% endcomment %}
                         </div>
                     </div>
                 </div>
