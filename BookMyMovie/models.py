@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Movie(models.Model):
 
     name = models.CharField(max_length=50)
-    desciption = models.TextField()
+    description = models.TextField()
     genre = models.CharField( max_length=50)
     director = models.CharField( max_length=50)
     language = models.CharField( max_length=50)

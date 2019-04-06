@@ -1,0 +1,36 @@
+{% extends 'User/base.html' %}
+{% load static %}
+{% block head_links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'BookMyMovie/css/BM-main.css' %}">
+{% endblock head_links %}
+
+{% block content %}
+
+    {% if movie %}
+        <div class="row">
+            <div class="container">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <img src="{{movie.posterURL}}" alt="" class="img-rounded img-responsive" />
+                        </div>
+                        <div class="col-md-offset-1 col-sm-6 col-md-8">
+                            <h3>{{movie.name}}</h3>
+                            <cite title="Year">{{movie.Year}}<i class="glyphicon glyphicon-map-marker">
+                            </i></cite>
+                            <h5><b>Plot :</b>{{movie.description}}</h5>
+                            <h5><b>Genre :</b>{{movie.genre}}</h5>
+                            <h5><b>Director:</b> {{movie.director}}</h5>
+                            <h5><b>Language:</b> {{movie.language}}</h5>
+                            <h5><b>Country:</b> {{movie.releaseDate}}</h5>
+                            <a class="btn btn-primary book-btn" href="">Book Your Seat</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h3>No Data Found</h3>
+    {% endif %}
+
+{% endblock content %}

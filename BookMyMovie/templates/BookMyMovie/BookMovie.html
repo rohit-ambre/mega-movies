@@ -38,10 +38,10 @@
                 {% for movie in movies %}
                     <div class="col-md-4">
                         <div class="card" >
-                                <img class="card-img-top" src="{{movie.posterURL}}" alt="Card image cap">
+                                <a href="{% url 'movie' movie.id %}"><img class="card-img-top" src="{{movie.posterURL}}" alt="Card image cap"></a>
                                 <div class="card-body">
                                 <h4 class="card-title">{{movie.name}}</h5>
-                                {% comment %} <a href="{% url 'display' movie.imdbID %}" class="btn btn-primary">More</a> {% endcomment %}
+                                <a href="{% url 'movie' movie.id %}" class="btn btn-primary">Book</a>
                             </div>
                         </div>
                     </div>                        

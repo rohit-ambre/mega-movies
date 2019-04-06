@@ -17,3 +17,8 @@ def handler404(request, exception):
 def handler500(request, exception):
     data = {"name": "There is some error"}
     return render(request,'BookMyMovie/500.html', data)
+
+def movie(request,m):
+    movie = Movie.objects.get(id=m)
+    data = {'movie':movie}
+    return render(request,'BookMyMovie/BMmovie.html',data)
