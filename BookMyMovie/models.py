@@ -45,9 +45,25 @@ class Theatre(models.Model):
         return reverse("Theatre_detail", kwargs={"pk": self.pk})
 
 
+class ShowDay(models.Model):
+
+    name = models.CharField( max_length=50)
+
+    class Meta:
+        verbose_name = _("ShowDay")
+        verbose_name_plural = _("ShowDays")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("ShowDay_detail", kwargs={"pk": self.pk})
+
+
+
 class ShowTime(models.Model):
     
-    day = models.CharField( max_length=10)
+    day = models.ForeignKey("BookMyMovie.ShowDay", verbose_name=_("ShowDay"), on_delete=models.CASCADE)
     time = models.CharField(_("Time"), max_length=10)
     price = models.IntegerField(_("Price"))
 
@@ -56,7 +72,7 @@ class ShowTime(models.Model):
         verbose_name_plural = _("ShowTimes")
 
     def __str__(self):
-        return self.day+' '+self.time
+        return self.time
 
     def get_absolute_url(self):
         return reverse("ShowTime_detail", kwargs={"pk": self.pk})
