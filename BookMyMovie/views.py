@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
-from BookMyMovie.models import Movie
+from BookMyMovie.models import Movie, ShowTime
 # Create your views here.
 
 
@@ -23,6 +23,6 @@ def movie(request,m):
     data = {'movie':movie}
     return render(request,'BookMyMovie/BMmovie.html',data)
 
-def calender(request):
+def calender(request,m):
 
     return render(request,'BookMyMovie/calender.html')
