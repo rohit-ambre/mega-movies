@@ -26,9 +26,9 @@
                             <h5><b>Release Date:</b> {{movie.releaseDate}}</h5>
                             {% if user.is_authenticated %}
                                 {% comment %} <a class="btn btn-primary book-btn" href="{% url 'calender' movie.id %}">Book Your Seat</a> {% endcomment %}
-                                <a class="btn btn-primary book-btn" data-toggle="modal" data-target="#myModal">Book Your Seat</a>
+                                <a data-toggle="modal" data-target="#myModal"><button type="button" class="btn btn-primary book-btn">Book Your Seat</button></a>
                             {% else %}
-                                <a class="btn btn-primary book-btn" href="{% url 'login' %}">Book Your Seat</a>
+                                <a href="{% url 'login' %}"><button type="button" class="btn btn-primary book-btn">Book Your Seat</button></a>
                             {% endif %}
                         </div>
                     </div>
@@ -51,10 +51,18 @@
         </div>
         <div class="modal-body">
             <p>modal body</p>
+            {% if showdays %}
+                <div class="boxed">
+                {% for day in showdays %}
+                    <input type="radio" id="{{day}}" name="showday" value="{{day.id}}">
+                    <label for="{{day}}">{{day}}</label>
+                {% endfor %}
+                </div>
+            {% endif %}
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <a href="{% url 'calender' 2 %}"><button type="button" class="btn btn-primary">Save changes</button></a>
+            <a href="{% url 'theatre' 2 %}"><button type="button" class="btn btn-primary">Half Done</button></a>
         </div>
         </div>
     </div>

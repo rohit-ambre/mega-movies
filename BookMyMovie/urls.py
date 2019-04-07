@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
     path('',views.index, name='index'),
     path('<int:m>', views.movie, name='movie'),
-    path('calender/<int:m>', views.calender, name='calender')
+    path('theatre/<int:m>', views.theatre, name='theatre')
 
 ]

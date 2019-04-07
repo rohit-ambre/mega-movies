@@ -17,3 +17,22 @@
     padding: 10px;
     color:white;
 }
+
+.boxed label {
+    display: inline-block;
+    width: 60px;
+    padding: 10px;
+    border: solid 2px #ccc;
+    transition: all 0.3s;
+}
+  
+.boxed input[type="radio"] {
+    display: none;
+}
+  
+.boxed input[type="radio"]:checked + label {
+    border: solid 3px rgb(36, 170, 36);
+    border-radius: 15px;
+    background-color: rgb(36, 170, 36);
+    color: white;
+}
