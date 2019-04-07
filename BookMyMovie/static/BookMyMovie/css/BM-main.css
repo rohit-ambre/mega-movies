@@ -18,6 +18,16 @@
     color:white;
 }
 
+.modal-book-btn{
+    float: right;
+    /* padding-right: 10px; */
+    margin-right: 10px;
+}
+
+.modal-close{
+    float: right;
+}
+
 .boxed label {
     display: inline-block;
     width: 60px;
