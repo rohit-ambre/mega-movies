@@ -3,7 +3,7 @@ import requests
 # Create your views here.
 
 def landing(request):
-    url = 'http://www.omdbapi.com/?apikey=1fc933fe&r=json&s={}'
+    url = 'http://www.omdbapi.com/?apikey=*******&r=json&s={}'
     
     if request.method == 'POST':
         term = request.POST.get("search", "")+'*' # added * for wildcard search
@@ -19,7 +19,7 @@ def testredirect(request):
     return redirect('/Movies')
 
 def display(request, imdb):
-    url = 'http://www.omdbapi.com/?apikey=1fc933fe&r=json&i={}'
+    url = 'http://www.omdbapi.com/?apikey=*******&r=json&i={}'
     
     if imdb:
         res = requests.get(url.format(imdb))
