@@ -19,6 +19,11 @@ def handler500(request, exception):
     return render(request,'BookMyMovie/500.html', data)
 
 def movie(request,m):
+
+    if request.method == "POST":
+        print(request.POST['showday'])
+        print(request.POST['movie-id'])
+
     movie = Movie.objects.get(id=m)
     showdays = ShowDay.objects.all()
     data = {'movie':movie,'showdays':showdays}
