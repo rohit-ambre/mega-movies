@@ -43,33 +43,27 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Select Day of the Week</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>modal body</p>
-                {% if showdays %}
-                    <div class="boxed">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {% for day in showdays %}
-                            <input type="radio" id="{{day}}" name="showday" value="{{day.id}}">
-                            <label for="{{day}}">{{day}}</label>
-                            <input type="hidden" name="movie-id" value={{movie.id}}>
-                        {% endfor %}
-                        <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
-                        <button class="btn btn-primary modal-book-btn" type="submit">submit</button>
-                    </form>
-                    </div>
-                {% endif %}
-            </div>
-            {% comment %} <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a href="{% url 'theatre' 2 %}"><button type="button" class="btn btn-primary">Half Done</button></a>
-            </div> {% endcomment %}
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Select Day of the Week</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>modal body</p>
+            {% if showdays %}
+                <div class="boxed">
+                {% for day in showdays %}
+                    <a href="{% url 'theatre' movie.id day.id %}"><button type="button" class="btn btn-primary">{{day}}</button></a>
+                {% endfor %}
+                </div>
+                <br>
+            {% endif %}
+        </div>
+        {% comment %} <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a href="{% url 'theatre' 2 %}"><button type="button" class="btn btn-primary">Save changes</button></a>
+        </div> {% endcomment %}
         </div>
     </div>
     </div>

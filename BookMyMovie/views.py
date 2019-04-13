@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
-from BookMyMovie.models import Movie, ShowDay
+from BookMyMovie.models import Movie, ShowDay,Theatre
 # Create your views here.
 
 
@@ -20,15 +20,14 @@ def handler500(request, exception):
 
 def movie(request,m):
 
-    if request.method == "POST":
-        print(request.POST['showday'])
-        print(request.POST['movie-id'])
-
     movie = Movie.objects.get(id=m)
     showdays = ShowDay.objects.all()
     data = {'movie':movie,'showdays':showdays}
     return render(request,'BookMyMovie/BMmovie.html',data)
 
-def theatre(request,m):
+def theatre(request,m,day):
+    
+    theatres = Theatre.objects.all()
+    data = {'movieID':m,'day':day,'theatres':theatres}
 
-    return render(request,'BookMyMovie/theatre.html')
+    return render(request,'BookMyMovie/theatre.html',data)

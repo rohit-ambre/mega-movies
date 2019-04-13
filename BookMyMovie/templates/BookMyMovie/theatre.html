@@ -1,6 +1,16 @@
 {% extends 'User/base.html' %}
 
 {% block content %}
-    <h1>theatre</h1>
+    <div class="container">
+        {% comment %} <h1>theatre</h1>
+        <h1>{{movieID}}</h1>
+        <h1>{{day}}</h1> {% endcomment %}
+        {% if theatres %}
+            {% for theare in theatres %}
+                <h1>{{theare.name}}</h1>
+            {% endfor %}
+        {% endif %}
+
+    </div>
 
 {% endblock content %}
