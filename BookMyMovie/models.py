@@ -65,6 +65,8 @@ class ShowTime(models.Model):
     
     day = models.ForeignKey("BookMyMovie.ShowDay", verbose_name=_("ShowDay"), on_delete=models.CASCADE)
     time = models.CharField(_("Time"), max_length=10)
+    movieID = models.ForeignKey("BookMyMovie.Movie", verbose_name=_("movie"), on_delete=models.CASCADE)
+    TheatreID = models.ForeignKey("BookMyMovie.Theatre", verbose_name=_("Theatre"), on_delete=models.CASCADE)
     price = models.IntegerField(_("Price"))
 
     class Meta:
