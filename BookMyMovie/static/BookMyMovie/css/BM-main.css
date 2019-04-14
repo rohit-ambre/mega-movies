@@ -46,3 +46,8 @@
     background-color: rgb(36, 170, 36);
     color: white;
 }
+
+.theatre-box{
+    border: #ccc 1px solid;
+    margin: 5px;
+}

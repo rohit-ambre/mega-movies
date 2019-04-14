@@ -1,14 +1,26 @@
 {% extends 'User/base.html' %}
+{% load static %}
+{% block head_links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'BookMyMovie/css/BM-main.css' %}">
+{% endblock head_links %}
 
 {% block content %}
     <div class="container">
-        {% comment %} <h1>theatre</h1>
-        <h1>{{movieID}}</h1>
-        <h1>{{day}}</h1> {% endcomment %}
+
         {% if theatres %}
-            {% for theare in theatres %}
-                <h1>{{theare.name}}</h1>
+            <div class="row">
+            {% for theatre in theatres %}
+                <div class="col-md-6 offset-md-3 theatre-box">
+                    <h1>{{theatre.name}}</h1>
+                    <p>{{theatre.location}}</p>
+                    <div>
+                        <p class="float-left theatre-address"><small>{{theatre.address}}</small></p>
+                        <button type="button" class="float-right btn btn-secondary theatre-btn">Book</button>
+                    </div>
+                </div>
+                
             {% endfor %}
+            </div>
         {% endif %}
 
     </div>
