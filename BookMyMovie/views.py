@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
-from BookMyMovie.models import Movie, ShowDay,Theatre
+from BookMyMovie.models import Movie, ShowDay,Theatre, ShowTime
 # Create your views here.
 
 
@@ -28,6 +28,14 @@ def movie(request,m):
 def theatre(request,m,day):
     
     theatres = Theatre.objects.all()
+    shows = {}
+    for th in theatres:
+        # print(th.name)
+        show_list = ShowTime.objects.filter(movieID=m).filter(day=day).filter(TheatreID=th.id)
+        shows[th.name] = show_list
+
+    # print(shows)
+
     data = {'movieID':m,'day':day,'theatres':theatres}
 
     return render(request,'BookMyMovie/theatre.html',data)
