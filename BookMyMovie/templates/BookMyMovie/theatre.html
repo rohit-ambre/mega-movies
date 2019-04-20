@@ -9,7 +9,8 @@
 
         {% if theatres %}
             <div class="row">
-            {% for theatre in theatres %}
+            {{combined_dict}}
+            {% comment %} {% for theatre in theatres %}
                 <div class="col-md-6 offset-md-3 theatre-box">
                     <h1>{{theatre.name}}</h1>
                     <p>{{theatre.location}}</p>
@@ -19,7 +20,7 @@
                     </div>
                 </div>
                 
-            {% endfor %}
+            {% endfor %} {% endcomment %}
             </div>
         {% endif %}
 

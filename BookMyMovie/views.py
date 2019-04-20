@@ -29,13 +29,17 @@ def theatre(request,m,day):
     
     theatres = Theatre.objects.all()
     shows = {}
+    combined_dict = {}
+
     for th in theatres:
         # print(th.name)
         show_list = ShowTime.objects.filter(movieID=m).filter(day=day).filter(TheatreID=th.id)
         shows[th.name] = show_list
+        combined_dict[th.name] = [th,show_list]
 
-    # print(shows)
 
-    data = {'movieID':m,'day':day,'theatres':theatres}
+    print(combined_dict)
+
+    data = {'movieID':m,'day':day,'theatres':theatres,'shows':shows,'combined_dict':combined_dict}
 
     return render(request,'BookMyMovie/theatre.html',data)
