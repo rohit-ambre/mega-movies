@@ -9,18 +9,19 @@
 
         {% if theatres %}
             <div class="row">
-            {{combined_dict}}
-            {% comment %} {% for theatre in theatres %}
+            {% comment %} {{combined_dict}} {% endcomment %}
+            {% comment %} {% for k,v in combined_dict.items %}{{v.1.day}}<br>{% endfor %} {% endcomment %}
+            {% for k,v in combined_dict.items %}
                 <div class="col-md-6 offset-md-3 theatre-box">
-                    <h1>{{theatre.name}}</h1>
-                    <p>{{theatre.location}}</p>
+                    <h1>{{v.0.name}}</h1>
+                    <p>{{v.0.location}}</p>
                     <div>
-                        <p class="float-left theatre-address"><small>{{theatre.address}}</small></p>
+                        <p class="float-left theatre-address"><small>{{v.0.address}}</small></p>
                         <button type="button" class="float-right btn btn-secondary theatre-btn">Book</button>
                     </div>
                 </div>
                 
-            {% endfor %} {% endcomment %}
+            {% endfor %}
             </div>
         {% endif %}
 

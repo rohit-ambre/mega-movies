@@ -38,7 +38,7 @@ def theatre(request,m,day):
         combined_dict[th.name] = [th,show_list]
 
 
-    print(combined_dict)
+    # print(combined_dict)
 
     data = {'movieID':m,'day':day,'theatres':theatres,'shows':shows,'combined_dict':combined_dict}
 
