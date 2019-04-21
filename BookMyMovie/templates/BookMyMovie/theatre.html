@@ -11,14 +11,25 @@
             <div class="row">
             {% comment %} {{combined_dict}} {% endcomment %}
             {% comment %} {% for k,v in combined_dict.items %}{{v.1.day}}<br>{% endfor %} {% endcomment %}
-            {% for k,v in combined_dict.items %}
+            {% for key,val in combined_dict.items %}
                 <div class="col-md-6 offset-md-3 theatre-box">
-                    <h1>{{v.0.name}}</h1>
-                    <p>{{v.0.location}}</p>
+                    <h1>{{val.0.name}}</h1>
+                    <p>{{val.0.location}}</p>
                     <div>
-                        <p class="float-left theatre-address"><small>{{v.0.address}}</small></p>
-                        <button type="button" class="float-right btn btn-secondary theatre-btn">Book</button>
+                        <p class="float-left theatre-address"><small>{{val.0.address}}</small></p>
+                        {% comment %} <button type="button" class="float-right btn btn-secondary theatre-btn">Book</button> {% endcomment %}
                     </div>
+                    <br>
+                    {% if val.1 %}
+                        <div>
+                            {% comment %} <ul> {% endcomment %}
+                            {% for i in val.1 %}
+                                <button type="button" class="btn btn-outline-success">{{i}}</button>
+                                {% comment %} <li>{{i.id}}</li> {% endcomment %}
+                            {% endfor %}
+                            {% comment %} </ul> {% endcomment %}
+                        </div>
+                    {% endif %}
                 </div>
                 
             {% endfor %}
