@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 from BookMyMovie.models import Movie, ShowDay,Theatre, ShowTime
-# Create your views here.
 
 
 def index(request):
@@ -32,14 +31,18 @@ def theatre(request,m,day):
     combined_dict = {}
 
     for th in theatres:
-        # print(th.name)
         show_list = ShowTime.objects.filter(movieID=m).filter(day=day).filter(TheatreID=th.id)
         shows[th.name] = show_list
         combined_dict[th.name] = [th,show_list]
 
-
-    # print(combined_dict)
-
     data = {'movieID':m,'day':day,'theatres':theatres,'shows':shows,'combined_dict':combined_dict}
 
     return render(request,'BookMyMovie/theatre.html',data)
+
+
+def seat(request,m,day,show):
+
+    print(m)
+    print(day)
+    print(show)
+    return render(request,'BookMyMovie/seat.html')

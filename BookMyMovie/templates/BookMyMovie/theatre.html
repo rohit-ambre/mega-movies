@@ -22,12 +22,9 @@
                     <br>
                     {% if val.1 %}
                         <div>
-                            {% comment %} <ul> {% endcomment %}
                             {% for i in val.1 %}
-                                <button type="button" class="btn btn-outline-success">{{i}}</button>
-                                {% comment %} <li>{{i.id}}</li> {% endcomment %}
+                                <a href="{% url 'seat' movieID day i.id %}"><button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="Rs.{{i.price}}">{{i}}</button></a>
                             {% endfor %}
-                            {% comment %} </ul> {% endcomment %}
                         </div>
                     {% endif %}
                 </div>
