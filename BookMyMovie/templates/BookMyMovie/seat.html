@@ -3,3 +3,15 @@
 {% block head_links %}
     <link rel="stylesheet" type="text/css" href="{% static 'BookMyMovie/css/BM-main.css' %}">
 {% endblock head_links %}
+
+{% block content %}
+    <div class="container">
+        {% comment %} <h1>{{show_data.movieID}}</h1> {% endcomment %}
+        <h1>Choose Your seats</h1>
+        <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="checkbox" checked autocomplete="off"> 2
+            </label>
+        </div>
+    </div>
+{% endblock content %}

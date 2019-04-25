@@ -42,7 +42,10 @@ def theatre(request,m,day):
 
 def seat(request,m,day,show):
 
-    print(m)
-    print(day)
-    print(show)
-    return render(request,'BookMyMovie/seat.html')
+    # print(m)
+    # print(day)
+    # print(show)
+    show_data = ShowTime.objects.get(id=show)
+    data = {'show_data':show_data}
+    # print(show_data.movieID)
+    return render(request,'BookMyMovie/seat.html',data)

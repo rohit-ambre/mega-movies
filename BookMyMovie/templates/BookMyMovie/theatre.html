@@ -23,7 +23,7 @@
                     {% if val.1 %}
                         <div>
                             {% for i in val.1 %}
-                                <a href="{% url 'seat' movieID day i.id %}"><button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="Rs.{{i.price}}">{{i}}</button></a>
+                                <a href="{% url 'seat' movieID day i.id %}"><button type="button" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top" title="Rs.{{i.price}}">{{i}}</button></a>
                             {% endfor %}
                         </div>
                     {% endif %}
