@@ -74,7 +74,7 @@ class ShowTime(models.Model):
         verbose_name_plural = _("ShowTimes")
 
     def __str__(self):
-        return self.time
+        return self.time+' '+self.day.name+' '+self.movieID.name+' '+self.TheatreID.name 
 
     def get_absolute_url(self):
         return reverse("ShowTime_detail", kwargs={"pk": self.pk})

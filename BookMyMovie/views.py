@@ -42,10 +42,13 @@ def theatre(request,m,day):
 
 def seat(request,m,day,show):
 
-    # print(m)
-    # print(day)
-    # print(show)
     show_data = ShowTime.objects.get(id=show)
+    theatre_data = Theatre.objects.get(name=show_data.TheatreID)
+    
+    seats = [i for i in range(1,theatre_data.seats+1)]
+
+    # print(seats)
+
     data = {'show_data':show_data}
-    # print(show_data.movieID)
+
     return render(request,'BookMyMovie/seat.html',data)
