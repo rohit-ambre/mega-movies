@@ -25,7 +25,7 @@ def movie(request,m):
     return render(request,'BookMyMovie/BMmovie.html',data)
 
 def theatre(request,m,day):
-    print(m)
+
     theatres = Theatre.objects.all()
     shows = {}
     combined_dict = {}
@@ -44,11 +44,11 @@ def seat(request,m,day,show):
 
     if request.method == 'POST':
         print(request.POST)
-
+    
     show_data = ShowTime.objects.get(id=show)
     theatre_data = Theatre.objects.get(name=show_data.TheatreID)
     bookings = Booking.objects.filter(show=show)
-    # print(bookings[0].seats)
+
     booked_seats_nested = []
     booked_seats = []
     for booking in bookings:
@@ -59,12 +59,19 @@ def seat(request,m,day,show):
             if type(i) == list: 
                 removeNestings(i) 
             else: 
-                booked_seats.append(i)
+                booked_seats.append(int(i))
 
     removeNestings(booked_seats_nested)
 
     seats_arr = [i for i in range(1,theatre_data.seats+1)]
 
-    data = {'show_data':show_data,'seats_arr': seats_arr,'seat_count':10}
+    seat_details = {}
+    for s in seats_arr:
+        if s in booked_seats:
+            seat_details[s] = [s,'active','disabled']
+        else:
+            seat_details[s] = [s,'','']    
+
+    data = {'show_data':show_data,'seats_arr': seats_arr,'booked_seats':booked_seats,'seat_details':seat_details}
 
     return render(request,'BookMyMovie/seat.html',data)

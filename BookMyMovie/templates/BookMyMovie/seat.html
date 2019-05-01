@@ -2,17 +2,14 @@
 {% load static %}
 {% block head_links %}
     <link rel="stylesheet" type="text/css" href="{% static 'BookMyMovie/css/BM-main.css' %}">
+    {% comment %} <script src="{% static 'BookMyMovie/js/BookMovie.js' %}"></script> {% endcomment %}
 {% endblock head_links %}
 
 {% block content %}
     <div class="container">
-        {% comment %} <h1>{{show_data.movieID}}</h1> {% endcomment %}
+
         <h1>Choose Your seats</h1>
-        <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="checkbox" checked autocomplete="off"> 2
-            </label>
-        </div>
+        <br>
         <div class="seat-wrapper">
             <div class="seat-head">
                 <h6 class="seat-screen">Screen Here</h6>
@@ -23,20 +20,24 @@
                     <form  method="POST">
                     {% csrf_token %}
                         <div class="form-inline">
-                            {% for i in seats_arr %}
+                            {% for i,j in seat_details.items %}
                                 <div class="btn-group-toggle" data-toggle="buttons">
-                                    <label class="seat-btn btn btn-light ">
-                                        <input type="checkbox" value="{{i}}" name="seats">{{i}}
+                                    <label id="seat-{{i}}" class="seat-btn btn btn-light {% ifequal j.1 'active' %}active{% endifequal %}">
+                                        <input type="checkbox" value="{{i}}" name="seats" {% ifequal j.2 'disabled' %}disabled="true"{% endifequal %}>{{i}}
                                     </label>
                                 </div>
                                 {% comment %} {% if forloop.counter|divisibleby:10 %}<br>{% endif %} {% endcomment %}
                             {% endfor %}
                         </div>
                         <br>
-                        <button type="submit">submit</button>
+                        <button type="submit" class="btn btn-primary seat-submit-btn">submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 {% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'BookMyMovie/js/BookMovie.js' %}"></script>
+{% endblock %}
