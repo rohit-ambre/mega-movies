@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import requests
 from BookMyMovie.models import Movie, ShowDay,Theatre, ShowTime, Booking
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def index(request):
@@ -44,11 +46,24 @@ def seat(request,m,day,show):
 
     if request.method == 'POST':
         print(request.POST)
+        booking_seats = request.POST.getlist('seats')
+        no_of_tickets = len(booking_seats)
+        per_ticket_price = request.POST['price']
+        total_price = int(per_ticket_price)*no_of_tickets
+        booking_seats_comma = ','.join(map(str, booking_seats))
+        show_details = ShowTime.objects.get(id=request.POST['show'])
+        user_obj = User.objects.get(id=request.user.id)
+        # print(user_obj)
+
+        bookingID = Booking(show=show_details,user=user_obj,seats=booking_seats_comma,price=total_price)
+        bookingID.save()
+        messages.success(request,f'{user_obj.username} your ticket has been booked')
+        return redirect('index')
     
     show_data = ShowTime.objects.get(id=show)
     theatre_data = Theatre.objects.get(name=show_data.TheatreID)
     bookings = Booking.objects.filter(show=show)
-
+    print(bookings[0].seats)
     booked_seats_nested = []
     booked_seats = []
     for booking in bookings:

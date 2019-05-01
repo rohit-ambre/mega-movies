@@ -82,8 +82,8 @@ class ShowTime(models.Model):
 
 class Booking(models.Model):
 
-    movie = models.ForeignKey("BookMyMovie.Movie", verbose_name=_("Movie"), on_delete=models.CASCADE)    
-    theatre = models.ForeignKey("BookMyMovie.Theatre", verbose_name=_("Theatre"), on_delete=models.CASCADE)
+    # movie = models.ForeignKey("BookMyMovie.Movie", verbose_name=_("Movie"), on_delete=models.CASCADE)    
+    # theatre = models.ForeignKey("BookMyMovie.Theatre", verbose_name=_("Theatre"), on_delete=models.CASCADE)
     show = models.ForeignKey("BookMyMovie.ShowTime", verbose_name=_("Show"), on_delete=models.CASCADE)
     user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     seats = models.CharField(_("Seats"), max_length=100)
@@ -96,7 +96,7 @@ class Booking(models.Model):
         verbose_name_plural = _("Bookings")
 
     def __str__(self):
-        return self.movie.name
+        return self.show.time+' '+self.show.movieID.name+' '+self.user.username
 
     def get_absolute_url(self):
         return reverse("Booking_detail", kwargs={"pk": self.pk})

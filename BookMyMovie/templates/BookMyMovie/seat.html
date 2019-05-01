@@ -26,8 +26,10 @@
                                         <input type="checkbox" value="{{i}}" name="seats" {% ifequal j.2 'disabled' %}disabled="true"{% endifequal %}>{{i}}
                                     </label>
                                 </div>
-                                {% comment %} {% if forloop.counter|divisibleby:10 %}<br>{% endif %} {% endcomment %}
+                                {% comment %} {% if forloop.counter|divisibleby:10 %}<br>{% endif %} {% endcomment %}          
                             {% endfor %}
+                            <input type="hidden" value="{{show_data.id}}" name="show">
+                            <input type="hidden" value="{{show_data.price}}" name="price">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary seat-submit-btn">submit</button>
