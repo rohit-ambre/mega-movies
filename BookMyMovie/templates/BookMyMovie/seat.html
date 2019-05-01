@@ -17,7 +17,25 @@
             <div class="seat-head">
                 <h6 class="seat-screen">Screen Here</h6>
             </div>
+            <br><br>
             <div class="seat-body">
+                <div class="seat-layout">
+                    <form  method="POST">
+                    {% csrf_token %}
+                        <div class="form-inline">
+                            {% for i in seats_arr %}
+                                <div class="btn-group-toggle" data-toggle="buttons">
+                                    <label class="seat-btn btn btn-light ">
+                                        <input type="checkbox" value="{{i}}" name="seats">{{i}}
+                                    </label>
+                                </div>
+                                {% comment %} {% if forloop.counter|divisibleby:10 %}<br>{% endif %} {% endcomment %}
+                            {% endfor %}
+                        </div>
+                        <br>
+                        <button type="submit">submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

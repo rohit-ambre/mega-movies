@@ -96,7 +96,7 @@ class Booking(models.Model):
         verbose_name_plural = _("Bookings")
 
     def __str__(self):
-        return self.movie+' '+user
+        return self.movie.name
 
     def get_absolute_url(self):
         return reverse("Booking_detail", kwargs={"pk": self.pk})

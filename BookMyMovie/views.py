@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
-from BookMyMovie.models import Movie, ShowDay,Theatre, ShowTime
+from BookMyMovie.models import Movie, ShowDay,Theatre, ShowTime, Booking
 
 
 def index(request):
@@ -25,7 +25,7 @@ def movie(request,m):
     return render(request,'BookMyMovie/BMmovie.html',data)
 
 def theatre(request,m,day):
-    
+    print(m)
     theatres = Theatre.objects.all()
     shows = {}
     combined_dict = {}
@@ -42,13 +42,29 @@ def theatre(request,m,day):
 
 def seat(request,m,day,show):
 
+    if request.method == 'POST':
+        print(request.POST)
+
     show_data = ShowTime.objects.get(id=show)
     theatre_data = Theatre.objects.get(name=show_data.TheatreID)
+    bookings = Booking.objects.filter(show=show)
+    # print(bookings[0].seats)
+    booked_seats_nested = []
+    booked_seats = []
+    for booking in bookings:
+        booked_seats_nested.append(booking.seats.split(','))
     
-    seats = [i for i in range(1,theatre_data.seats+1)]
+    def removeNestings(l): 
+        for i in l: 
+            if type(i) == list: 
+                removeNestings(i) 
+            else: 
+                booked_seats.append(i)
 
-    # print(seats)
+    removeNestings(booked_seats_nested)
 
-    data = {'show_data':show_data}
+    seats_arr = [i for i in range(1,theatre_data.seats+1)]
+
+    data = {'show_data':show_data,'seats_arr': seats_arr,'seat_count':10}
 
     return render(request,'BookMyMovie/seat.html',data)
