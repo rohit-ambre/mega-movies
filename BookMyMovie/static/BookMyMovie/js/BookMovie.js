@@ -1,10 +1,18 @@
 $( document ).ready(function() {
 
     $(".seat-btn").on('click',function(e){
-        // console.log(e.target.id);
         var target_id = e.target.id;
-        $("#"+target_id).removeClass('btn-light');
-        $("#"+target_id).addClass('btn-success');
+
+        if($(this).hasClass("active")){
+
+            if($(this).hasClass("btn-success")){
+                $(this).addClass('btn-light');
+                $(this).removeClass('btn-success');
+            }
+        }else{
+            $(this).removeClass('btn-light');
+            $(this).addClass('btn-success');
+        }
  
     });
 });

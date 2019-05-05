@@ -45,7 +45,6 @@ def theatre(request,m,day):
 def seat(request,m,day,show):
 
     if request.method == 'POST':
-        print(request.POST)
         booking_seats = request.POST.getlist('seats')
         no_of_tickets = len(booking_seats)
         per_ticket_price = request.POST['price']
@@ -53,7 +52,6 @@ def seat(request,m,day,show):
         booking_seats_comma = ','.join(map(str, booking_seats))
         show_details = ShowTime.objects.get(id=request.POST['show'])
         user_obj = User.objects.get(id=request.user.id)
-        # print(user_obj)
 
         bookingID = Booking(show=show_details,user=user_obj,seats=booking_seats_comma,price=total_price)
         bookingID.save()
@@ -63,7 +61,6 @@ def seat(request,m,day,show):
     show_data = ShowTime.objects.get(id=show)
     theatre_data = Theatre.objects.get(name=show_data.TheatreID)
     bookings = Booking.objects.filter(show=show)
-    print(bookings[0].seats)
     booked_seats_nested = []
     booked_seats = []
     for booking in bookings:
