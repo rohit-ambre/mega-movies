@@ -25,7 +25,7 @@ from User import views as user_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',M_views.testredirect, name='test'),
+    path('',M_views.moviesredirect, name='redirect'),
     path('BookMovie/', include('BookMyMovie.urls')),
     path('Movies/', include('Movies.urls')),
     path('register/', user_view.register, name='register'),

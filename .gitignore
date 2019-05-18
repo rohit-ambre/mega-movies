@@ -1,5 +1,8 @@
 #gitignore file
 
+#setting env file
+Mega_Movies/settings.ini
+
 # cache files
 BookMyMovie/__pycache__
 Mega_Movies/__pycache__
