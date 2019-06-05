@@ -16,7 +16,7 @@
         <header class="site-header">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href={% url 'landing' %}>Mega Movies</a>
+                    <a class="navbar-brand" href="{% url 'landing' %}">Mega Movies</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -52,15 +52,17 @@
         </header>    
             
         <main role="main">
-            <div class="row">
-                <div class="col-md-8">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{message.tags}}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{message.tags}}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             {% block content %}

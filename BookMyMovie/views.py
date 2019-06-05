@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import requests
+from django.contrib.auth.decorators import login_required
 from BookMyMovie.models import Movie, ShowDay,Theatre, ShowTime, Booking
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -41,7 +42,7 @@ def theatre(request,m,day):
 
     return render(request,'BookMyMovie/theatre.html',data)
 
-
+@login_required
 def seat(request,m,day,show):
 
     if request.method == 'POST':
@@ -56,7 +57,7 @@ def seat(request,m,day,show):
         bookingID = Booking(show=show_details,user=user_obj,seats=booking_seats_comma,price=total_price)
         bookingID.save()
         messages.success(request,f'{user_obj.username} your ticket has been booked')
-        return redirect('index')
+        return redirect('booking')
     
     show_data = ShowTime.objects.get(id=show)
     theatre_data = Theatre.objects.get(name=show_data.TheatreID)
@@ -87,3 +88,9 @@ def seat(request,m,day,show):
     data = {'show_data':show_data,'seats_arr': seats_arr,'booked_seats':booked_seats,'seat_details':seat_details}
 
     return render(request,'BookMyMovie/seat.html',data)
+
+@login_required
+def booking(request):
+
+    data = {'some_data':"test"}
+    return render(request,'BookMyMovie/booking.html',data)
