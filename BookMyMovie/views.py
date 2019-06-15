@@ -57,7 +57,7 @@ def seat(request,m,day,show):
         bookingID = Booking(show=show_details,user=user_obj,seats=booking_seats_comma,price=total_price)
         bookingID.save()
         messages.success(request,f'{user_obj.username} your ticket has been booked')
-        return redirect('booking')
+        return redirect('booking',id=bookingID.id)
     
     show_data = ShowTime.objects.get(id=show)
     theatre_data = Theatre.objects.get(name=show_data.TheatreID)
@@ -90,7 +90,11 @@ def seat(request,m,day,show):
     return render(request,'BookMyMovie/seat.html',data)
 
 @login_required
-def booking(request):
+def booking(request,id):
 
-    data = {'some_data':"test"}
+    BookedTicket = Booking.objects.get(id=id)
+    Tickets = []
+    Tickets = BookedTicket.seats.split(',')
+    TicketsCount = len(Tickets)
+    data = {'bookingData':BookedTicket,'count':TicketsCount}
     return render(request,'BookMyMovie/booking.html',data)

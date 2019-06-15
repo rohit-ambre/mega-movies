@@ -11,9 +11,9 @@
                     <div class="col-md-4">
                         <div class="card" >
                             {% if movie.Poster == 'N/A' %}
-                                <img class="card-img-top" src="https://via.placeholder.com/350x520.png?text=No+Poster+Sorry" alt="Card image cap">
+                                <img class="card-img-top" src="https://via.placeholder.com/350x520.png?text=No+Poster+Sorry" alt="Movie Placeholder"
                             {% else %}
-                                <a href="{% url 'display' movie.imdbID %}"><img class="card-img-top" src="{{movie.Poster}}" alt="Card image cap"></a>
+                                <a href="{% url 'display' movie.imdbID %}"><img class="card-img-top" src="{{movie.Poster}}" alt="Movie Poster"></a>
                             {% endif %}
                              <div class="card-body">
                                 <h4 class="card-title">{{movie.Title}}</h5>

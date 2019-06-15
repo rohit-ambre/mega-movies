@@ -78,4 +78,13 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-  }
+}
+
+.title-text{
+    font-weight: 500;
+    font-size: 60px;
+}
+
+.ticket-count{
+    font-size: 100px;
+}

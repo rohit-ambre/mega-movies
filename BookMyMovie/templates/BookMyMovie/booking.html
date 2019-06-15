@@ -1,8 +1,38 @@
 {% extends 'User/base.html' %}
 {% load static %}
+{% block head_links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'BookMyMovie/css/BM-main.css' %}">
+{% endblock head_links %}
 
 {% block content %}
-<div>
-    {{some_data}}
-</div>
+    <div class="container">
+        <div class="card border-success shadow py-2 my-3">
+            <div class="row m-2">
+                <div class="col-md-4">
+                    <img class="card-img-top" src="{{bookingData.show.movieID.posterURL}}" alt="Movie poster">
+                </div>
+                <div class="col-md-8">
+                    <div class="">
+                        <h1 class="card-title title-text">{{bookingData.show.movieID.name}} </h1>
+                        {% comment %} <img class="card-img-top" src="../../../media/green_check.png" width="50" height="50" alt="Movie poster"> {% endcomment %}
+                    </div>
+                    <h2 class="card-text">{{bookingData.show.day}} {{bookingData.show.time}}</h2><br />
+                    <h2 class="card-text">{{bookingData.show.TheatreID.name}}, {{bookingData.show.TheatreID.location}}</h2>
+                    <br />
+                    <div class="">
+                        <h1 class="ticket-count d-inline text-success">{{count}}</h1>
+                        <h3 class="d-inline">{% if count > 1 %}Tickets {% else %}Ticket {% endif %}</h3>
+                    </div>
+                    <h2 class="">{{bookingData.seats}}</h2>
+                    <br />
+                    <div class="card-footer">
+                        {% comment %} <div class="float-right"> {% endcomment %}
+                            <h1 class="d-inline">Price:</h1>
+                            <h2 class="d-inline"> <b>{{bookingData.price}}</b> Rs.</h2>
+                        {% comment %} </div> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

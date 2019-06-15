@@ -1,5 +1,5 @@
 #gitignore file
-
+.vscode
 #setting env file
 Mega_Movies/settings.ini
 
