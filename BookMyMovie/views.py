@@ -103,6 +103,5 @@ def booking(request,id):
 def history(request):
 
     BookingHistory = Booking.objects.filter(user__exact=request.user).order_by('-createTime')
-    print(BookingHistory)
     data = {"history":BookingHistory}
     return render(request, 'BookMyMovie/history.html',data)
