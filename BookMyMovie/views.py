@@ -98,3 +98,11 @@ def booking(request,id):
     TicketsCount = len(Tickets)
     data = {'bookingData':BookedTicket,'count':TicketsCount}
     return render(request,'BookMyMovie/booking.html',data)
+
+@login_required
+def history(request):
+
+    BookingHistory = Booking.objects.filter(user__exact=request.user).order_by('-createTime')
+    print(BookingHistory)
+    data = {"history":BookingHistory}
+    return render(request, 'BookMyMovie/history.html',data)

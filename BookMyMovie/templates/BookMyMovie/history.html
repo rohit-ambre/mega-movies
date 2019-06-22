@@ -1,0 +1,48 @@
+{% extends 'User/base.html' %}
+{% load static %}
+{% block head_links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'BookMyMovie/css/BM-main.css' %}">
+{% endblock head_links %}
+
+
+{% block content %}
+    <div class="container">
+        {% if history %}
+            <h1>Booking History</h1>
+            {% for hist in history %}
+                <div class="row m-2">
+                    <h4>{{hist.createTime }}</h4>
+                    <div class="card border-success shadow py-2 mb-4 col-md-10">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="" width="200px" src="{{hist.show.movieID.posterURL}}" alt="Movie poster">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="">
+                                    <h3 class="card-title">{{hist.show.movieID.name}} </h3>
+                                </div>
+                                <h5 class="card-text">{{hist.show.day}} {{hist.show.time}}</h5><br />
+                                <h5 class="card-text">{{hist.show.TheatreID.name}}, {{hist.show.TheatreID.location}}</h5>
+                                <br />
+                                <div class="">
+                                    <h3 class="d-inline">Tickets</h3>
+                                </div>
+                                <h5 class="">{{hist.seats}}</h5>
+                                <br />
+                                <div class="card-footer">
+                                    <h3 class="d-inline">Price:</h3>
+                                    <h5 class="d-inline"> <b>{{hist.price}}</b> Rs.</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% else %}
+            <h3>Oops! No bookings found</h3>
+            <h5>head over to <a href="{% url 'index' %}">Mega Movies</a> and get your Tickets</h5>
+        {% endif %}
+        
+    </div>
+{% endblock content %}

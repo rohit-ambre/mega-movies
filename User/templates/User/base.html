@@ -39,8 +39,19 @@
                         {% endif %}
                         <div class="navbar-nav">
                             {% if user.is_authenticated %}
-                                <a class="nav-item nav-link" href="{% url 'profile' %}">{{user.first_name}}</a>
-                                <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{user.first_name}}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                    <a class="dropdown-item" href="{% url 'history' %}">Booking History</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                                    </div>
+                                </li>
+                                {% comment %} <a class="nav-item nav-link dropdown-item" href="{% url 'profile' %}">{{user.first_name}}</a>
+                                <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a> {% endcomment %}
                             {% else %}
                                 <a class="nav-item nav-link" href="{% url 'register' %}">Sign Up</a>
                                 <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
