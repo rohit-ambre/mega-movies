@@ -1,0 +1,4 @@
+[settings]
+API_KEY = <some_key>
+SECRET_KEY = '<secret_key_here>'
+DEBUG = True
